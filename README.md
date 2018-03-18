@@ -76,7 +76,7 @@ __Tips and Tricks:__
 
 * Keep in mind, you can enter manual values on almost all the entries
 * Split a loop into parts and sequence them in a new order
-* Take the first half of a loop
+* Take the first or second half of a loop
 * Apply gain changes or normalize
 * Add fades
 * Split mono to stereo or mix stereo into mono
