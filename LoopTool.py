@@ -21,7 +21,7 @@ import glob
 import soundfile as sf
 
 
-version = "1.0.3"
+version = "1.0.4"
 
 white = "#ffffff"
 black = "#000000"
