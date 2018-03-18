@@ -50,13 +50,14 @@ __Requirements:__
 * Python3
 * Tkinter
 * GNU/Linux (with SoX)
-* sndfile-tools (https://github.com/erikd/sndfile-tools)
 * PySoundfile
+* sndfile-tools (https://github.com/erikd/sndfile-tools)
+* klick (http://das.nasophon.de/klick/)
 
 
 On Ubuntu/Mint:
 ```
-sudo apt-get install python3 python3-tk sox sndfile-tools
+sudo apt-get install python3 python3-tk sox sndfile-tools klick
 ```
 Install PySoundFile via pip3:
 ```
@@ -74,7 +75,11 @@ __Notes:__
 
 __Tips and Tricks:__
 
-* Split a loop into 4 parts and sequence them in a new order.
+* Keep in mind, you can enter manual values on almost all the entries.
+* Normalize you loops
+* Export click trackvia klick
+* Split a loop into parts and sequence them in a new order.
+* 
 
 
 

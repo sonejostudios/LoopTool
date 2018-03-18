@@ -4,6 +4,7 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
+from tkinter.simpledialog import askstring
 
 from tkinter.filedialog import askopenfilename, askdirectory, asksaveasfilename
 
@@ -44,6 +45,10 @@ playing_state = False
 
 play_looptime = 8
 
+
+startfile = "./click120.wav"
+
+startdir = "./"
 
 
 
@@ -110,7 +115,7 @@ class MainWindow:
 
         self.seconds_label = Label(self.info_frame, text="Seconds :", justify=LEFT)
         self.seconds_label.pack(side=LEFT)
-        self.seconds_entry = Entry(self.info_frame, width=8, background=white)
+        self.seconds_entry = Entry(self.info_frame, width=6, background=white)
         self.seconds_entry.pack(side=LEFT)
 
         self.channels_label = Label(self.info_frame, text="Channels :", justify=LEFT)
@@ -126,7 +131,7 @@ class MainWindow:
 
         self.grid_label = Label(self.info_frame, text="Grid :", justify=LEFT)
         self.grid_label.pack(side=LEFT)
-        self.grid_entry = ttk.Combobox(self.info_frame, width=5, values=gridpresets)
+        self.grid_entry = ttk.Combobox(self.info_frame, width=3, values=gridpresets)
         self.grid_entry.current(0)
         self.grid_entry.bind("<<ComboboxSelected>>", self.on_set_grid)
         self.grid_entry.bind("<Return>", self.on_set_grid)
@@ -135,8 +140,12 @@ class MainWindow:
 
         self.bpm_label = Label(self.info_frame, text="Bpm :", justify=LEFT)
         self.bpm_label.pack(side=LEFT)
-        self.bpm_entry = Entry(self.info_frame, width=9, background=white)
+        self.bpm_entry = Entry(self.info_frame, width=5, background=white)
         self.bpm_entry.pack(side=LEFT)
+
+        self.clickfile_button = ttk.Button(self.info_frame, text="Export Click", width=9, state="normal",
+                                          command=self.clickfile)
+        self.clickfile_button.pack(side=LEFT, padx=3)
 
 
 
@@ -326,12 +335,12 @@ class MainWindow:
 
 
 
-        # for testing only
-        self.wavfile_entry.insert(0, "/media/sda7/Programming/Python/looptool/sin.wav")
-        self.folder_entry.insert(0, "/media/sda7/Programming/Python/looptool/")
+        # set file and dir
+        self.wavfile_entry.insert(0, startfile)
+        self.folder_entry.insert(0, startdir)
 
+        # load on start
         self.load_file()
-
         self.thread_file_listbox()
 
 
@@ -345,6 +354,23 @@ class MainWindow:
     def doNothing(self):
         print("do nothing")
 
+
+
+    def clickfile(self):
+        print("export click file")
+
+        bpm = self.bpm_entry.get()
+
+        command = "klick -W 'click" + bpm + ".wav' -r 44100 1 4/4 " + bpm
+
+        commanddialog = askstring("Export Click File", "Setup:", initialvalue=command)
+
+        os.system(commanddialog)
+
+        self.wavfile_entry.delete(0, "end")
+        self.wavfile_entry.insert(0, self.folder_entry.get() + "click" + bpm + ".wav")
+        self.thread_file_listbox()
+        self.load_file()
 
 
 
