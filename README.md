@@ -6,9 +6,7 @@ __Description:__
 
 LoopTool is a collection of tools made for manipulating audio loops. LoopTool is able to split audio files into many equal parts or to extract a specific part, it can also put files in sequence or mix them together. It has also a lot more of handy features like appling fades, gain adjustement, normalize, convert to mono/stereo, etc etc... LoopTool is mainly based on SoX.
 
-![screenshot](https://github.com/sonejostudios/CDMasterTool/blob/master/CDMasterTool-135.png "CDMasterTool")
-
-CDMasterTool in action: https://youtu.be/A4S1s92GtNU
+![screenshot](https://github.com/sonejostudios/LoopTool/blob/master/LoopTool104.png "LoopTool")
 
 
 __Main Features:__
