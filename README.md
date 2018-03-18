@@ -18,7 +18,8 @@ __Main Features:__
 * Set working directory
 * Audiofile browser
 * Queue list
-* Grid and Bpm
+* Grid and bpm
+* Export click file
 * Split files into equal parts
 * Extract a specific part
 * Apply fade in and fade out to the parts
