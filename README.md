@@ -6,7 +6,7 @@ __Description:__
 
 LoopTool is a collection of tools made for audio loops. LoopTool is able to split audio files into many equal parts or to extract a specific part, it can also put files in sequence or mix them together. It has also a lot more of handy features like applying fades, gain adjustement, normalize, convert to mono/stereo, generate click track, etc etc... It's main goal is to prepare audio loops for live performence (with e.g. SuperBoucle, Luppp, Giada, Bitwig...). LoopTool is mainly based on SoX.
 
-![screenshot](https://github.com/sonejostudios/LoopTool/blob/master/LoopTool104.png "LoopTool")
+![screenshot](https://github.com/sonejostudios/LoopTool/blob/master/LoopTool105.png "LoopTool")
 
 
 __Main Features:__
