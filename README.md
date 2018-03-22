@@ -51,12 +51,11 @@ __Requirements:__
 * GNU/Linux (with SoX)
 * PySoundfile
 * sndfile-tools (https://github.com/erikd/sndfile-tools)
-* klick (http://das.nasophon.de/klick/)
 
 
 On Ubuntu/Mint:
 ```
-sudo apt-get install python3 python3-tk sox sndfile-tools klick
+sudo apt-get install python3 python3-tk sox sndfile-tools
 ```
 Install PySoundFile via pip3:
 ```
@@ -102,7 +101,6 @@ __Tips and Tricks:__
 * Add fades
 * Split mono to stereo or mix stereo into mono
 * Try to figure out the bpm with the grid (4 beat in one grid part)
-* Export click track via klick, change the parameters before exporting
 
 
 

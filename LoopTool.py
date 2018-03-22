@@ -4,7 +4,6 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
-from tkinter.simpledialog import askstring
 
 from tkinter.filedialog import askopenfilename, askdirectory, asksaveasfilename
 
@@ -21,7 +20,7 @@ import glob
 import soundfile as sf
 
 
-version = "1.0.4"
+version = "1.0.5"
 
 white = "#ffffff"
 black = "#000000"
@@ -71,9 +70,14 @@ class MainWindow:
         self.wavcanvas.bind("<Button-3>", self.on_divide)
         self.wavcanvas.grid(row=0, column=0, padx=0, sticky=W)
 
+        # Logo
+        self.logo = PhotoImage(file='bg.png')
+        self.logo2 = self.wavcanvas.create_image(400, 100, image=self.logo)
+
         # Waveform
         self.picture = PhotoImage(file='waveform.png')
         self.picture2 = self.wavcanvas.create_image(400, 100, image=self.picture)
+
 
 
         # Entry WAV file
@@ -140,12 +144,8 @@ class MainWindow:
 
         self.bpm_label = Label(self.info_frame, text="Bpm :", justify=LEFT)
         self.bpm_label.pack(side=LEFT)
-        self.bpm_entry = Entry(self.info_frame, width=5, background=white)
+        self.bpm_entry = Entry(self.info_frame, width=6, background=white)
         self.bpm_entry.pack(side=LEFT)
-
-        self.clickfile_button = ttk.Button(self.info_frame, text="Export Click", width=9, state="normal",
-                                          command=self.clickfile)
-        self.clickfile_button.pack(side=LEFT, padx=3)
 
 
 
@@ -193,14 +193,12 @@ class MainWindow:
         self.mono_checkbox.grid(row=1, column=5)
 
 
-
         # split/extract buttons
         self.splitbutton = ttk.Button(self.divide_frame, text="Split to Files", width=13, state="normal", command=self.on_split_file)
         self.splitbutton.grid(row=0, column=6, pady=5)
 
         self.trimbutton = ttk.Button(self.divide_frame, text="Extract Part", width=13, state="normal", command=self.on_trim_file)
         self.trimbutton.grid(row=1, column=6, pady=5)
-
 
 
         # divide
@@ -230,7 +228,6 @@ class MainWindow:
         self.startpoint_entry.grid(row=1, column=10)
 
 
-
         #listboxes
         self.listboxes_frame = Frame(root)
         self.listboxes_frame.grid(row=5, column=0, rowspan=1, columnspan=1, sticky=N+E+W, padx=5, pady=0)
@@ -250,7 +247,6 @@ class MainWindow:
         self.listbox_frame.grid(row=1, column=0, rowspan=1, columnspan=1, sticky=W, padx=0, pady=5)
 
 
-
         #  filebox buttons
         self.fileboxbutton_frame = Frame(self.listboxes_frame)
         self.fileboxbutton_frame.grid(row=2, column=0, rowspan=1, columnspan=1, sticky=N, padx=0, pady=5)
@@ -265,7 +261,6 @@ class MainWindow:
         self.toqueuebutton = ttk.Button(self.fileboxbutton_frame, text="->", width=10, state="normal",
                                        command=self.copy_to_queue)
         self.toqueuebutton.pack(side=LEFT)
-
 
 
         #queue buttons
@@ -295,7 +290,6 @@ class MainWindow:
         self.mixlistbutton.pack(side=LEFT)
 
 
-
         # Queuelist
         self.queuelistbox_frame = Frame(self.listboxes_frame)
         self.scrollbar = ttk.Scrollbar(self.queuelistbox_frame, orient=VERTICAL)
@@ -309,7 +303,6 @@ class MainWindow:
         self.scrollbar.pack(side=RIGHT, fill=Y)
         self.queuelistbox.pack(side=LEFT, fill=BOTH, expand=1)
         self.queuelistbox_frame.grid(row=1, column=1, rowspan=1, columnspan=1, sticky=W, padx=0, pady=5)
-
 
 
         # Folder
@@ -334,7 +327,6 @@ class MainWindow:
         self.folder_frame.grid(row=6, column=0, pady=5, sticky=W)
 
 
-
         # set file and dir
         self.wavfile_entry.insert(0, startfile)
         self.folder_entry.insert(0, startdir)
@@ -353,25 +345,6 @@ class MainWindow:
 
     def doNothing(self):
         print("do nothing")
-
-
-
-    def clickfile(self):
-        print("export click file")
-
-        bpm = self.bpm_entry.get()
-
-        command = "klick -W 'click" + bpm + ".wav' -r 44100 1 4/4 " + bpm
-
-        commanddialog = askstring("Export Click File", "Setup:", initialvalue=command)
-
-        os.system(commanddialog)
-
-        self.wavfile_entry.delete(0, "end")
-        self.wavfile_entry.insert(0, self.folder_entry.get() + "click" + bpm + ".wav")
-        self.thread_file_listbox()
-        self.load_file()
-
 
 
     def click_on_canvas(self, event):
@@ -402,7 +375,6 @@ class MainWindow:
 
         # update trim button
         self.trimbutton.config(state="normal")
-
 
 
 
@@ -481,7 +453,6 @@ class MainWindow:
 
 
     def on_copy_to_queue(self, event):
-        #self.nearest(event.y)
         self.copy_to_queue()
 
 
@@ -489,7 +460,6 @@ class MainWindow:
         print("copy to queue")
 
         loop_basename = os.path.basename(self.wavfile_entry.get())
-        #loop_basename = self.listbox.get(self.listbox.curselection())
 
         try:
             self.queuelistbox.select_set(self.queuecursel2+1)
@@ -516,7 +486,6 @@ class MainWindow:
 
         mergeconf = messagebox.askokcancel("Sequence Files",
                                            "This will append all the files in the queue to :\n\nsequenced_loops.wav")
-
         if mergeconf == 1:
             self.seq()
         else:
@@ -677,9 +646,6 @@ class MainWindow:
         self.set_fadeout_line()
 
 
-
-
-
     # grid
     def on_set_grid(self,event):
         self.setgrid()
@@ -711,7 +677,6 @@ class MainWindow:
         for i in range(0, grid):
             self.wavcanvas.create_line(length800*i, 000, length800*i, 200, fill="black", tag="linesgrid")
 
-
         # update
         self.select_part()
 
@@ -724,8 +689,6 @@ class MainWindow:
         # redraw divide lines
         self.divide()
 
-        #print(self.gridpart)
-        #print(fadepresets)
 
 
 
@@ -737,23 +700,16 @@ class MainWindow:
         # set start point
         startpoint = int(self.partlength_entry.get())  * (takepart-1)
 
-
         self.startpoint_entry.delete(0,"end")
         self.startpoint_entry.insert(0, str(startpoint))
 
-
         self.update_buttons()
-
 
         #reset startpoint
         if startpoint < 0:
             self.startpoint_entry.delete(0, "end")
             self.startpoint_entry.insert(0, 0)
             self.update_buttons()
-
-
-
-
 
 
     # trim export part
@@ -811,7 +767,6 @@ class MainWindow:
 
         # update listbox
         self.thread_file_listbox()
-
 
 
     # split apart
@@ -1048,8 +1003,6 @@ class MainWindow:
                                         fill="white", stipple='gray25', tag="selection")
 
 
-        self.trimbutton.config(text="Export")
-
 
     # play
     def play_file_toggle(self, event):
@@ -1241,7 +1194,6 @@ class MainWindow:
 
         if fadevalue != 0:
             for i in range(divider):
-                #self.wavcanvas.create_line(fadepos+partwidth*i, 000, partwidth*i, 200, fill="gray", tag="fadein", smooth=True, width=2)
                 self.wavcanvas.create_polygon(1+fadepos + partwidth * i, 000, 1+partwidth * i, 200, 1+partwidth * i, 000, fill="gray", tag="fadein", width=1)
 
 
@@ -1261,7 +1213,6 @@ class MainWindow:
 
         if fadevalue != 0:
             for i in range(divider):
-                #self.wavcanvas.create_line(800-(fadepos+partwidth*i), 000, 800-(partwidth*i), 200, fill="gray", tag="fadeout", smooth=True, width=2)
                 self.wavcanvas.create_polygon(800 - (fadepos + partwidth * i), 000, 800 - (partwidth * i), 200, 800 - (partwidth * i), 000, fill="gray", tag="fadeout", width=1)
 
 
@@ -1272,5 +1223,5 @@ class MainWindow:
 root = Tk()
 my_gui = MainWindow(root)
 
-#root.protocol('WM_DELETE_WINDOW', stop_playing)
+root.protocol('WM_DELETE_WINDOW', MainWindow.doNothing(MainWindow))
 root.mainloop()
