@@ -97,7 +97,7 @@ Info:
 * Grid: Grid for help
 * Bpm: Try to figure out the bpm of the file according to the grid (4 beat/grid line)
 
-On-File Editing:
+One-File Editing:
 * Fade In: Add fade in via presets. The last one is a grid length and will stick to it
 * Fade out: Same as fade in, but for fade out
 * Gain dB: Change file(s) gain(s) on export
