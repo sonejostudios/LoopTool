@@ -95,7 +95,7 @@ Info:
 * Channels: Amount of audio chanels in the file (mono/stereo/etc)
 * Samplerate: Samplerate of the selected file
 * Grid: Grid for help
-* Bpm: Try to figure out the bpm of the file according to the grid (4 beat/grid line)
+* Bpm: Calculates the bpm of the file according to the grid (4 beats/grid line)
 
 One-File Editing:
 * Fade In: Add fade in via presets. The last one is a grid length and will stick to it
