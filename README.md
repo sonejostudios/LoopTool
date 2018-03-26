@@ -77,17 +77,61 @@ __Shortcuts:__
 * Mouse-roll on any drop-down menu for a quick access (grid, fades, gain, divide)
 * Enter manual values on almost all the entries (e.g. gain = 1.5)
 * Space bar plays or stops the loaded file
-* Double-click a file in the file brwoser will add that file to the queue list
+* Double-click a file in the file browser will add that file to the queue list
 * Double-click a file in the queue list will remove that file from the que list
 
-__Buttons:__
 
-* (coming...)
+__Entries and Buttons:__
+
+Info:
+* WAV-File: Copy/Paste a .wav file there or type its path
+* ... : Opens a .wav file dialog
+* Load: Loads the file into LoopTool
+* Save As: Save the selected file as a new file (via save file dialog)
+* Play: Plays the selected file via Jack (snd-jackplay)
+* Stop: Stop playing
+* Samples: Total length (in samples) of the selected file
+* Seconds: Total length (in seconds) of the selected file
+* Channels: Amount of audio chanels in the file (mono/stereo/etc)
+* Samplerate: Samüplerate of the selected file
+* Grid: Grid for help
+* Bpm: Try to figure out the bpm of the file according to the grid (4 beat/grid line)
+
+On-File Editing:
+* Fade In: Add fade in via presets. The last one is a grid length and will stick to it
+* Fade out: Same as fade in, but for fade out
+* Gain dB: Change file(s) gain(s) on export
+* Normalize: Normalize file(s) gain(s) on export, this will overwrite Gain dB
+* Mono/Stereo. Force Mono or Stereo. (Mix two stereo channels together to mono or split a mono channel to stereo)
+* Split to files: Export all parts according to Divide
+* Export/Extract Part: Export the selected part only
+* Divide: Divides file into N parts
+* Extract Part: The choosen part
+* Part Length: Length of the selected part, in samples
+* Start Point: Starting point of the selected part
+
+File Browser:
+* Shows the content of the working directory
+* Delete File: Delete the file permanently
+* ->: Add selected file to Queue List
+
+Queue List (Many-Files Editing):
+* Shows the files in the queue list for processing
+* Remove: Remove selected file from the queue list
+* Clear: Clear the queue
+* Seq: Export all files in the queue list sequenced into one file (aka. Concatenate)
+* Mix: Mix all files in the queue list together into one file
+
+Working Directory:
+* Workdir: Copy/paste file path or type the folder path.
+* ...: Open path via dialog
+* Load: Load path as a working directory for LoopTool
 
 
 
 
-__Configuration:__
+
+__Get started:__
 
 * Open a working directory or a wave file, press load, done.
 
