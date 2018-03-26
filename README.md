@@ -93,7 +93,7 @@ Info:
 * Samples: Total length (in samples) of the selected file
 * Seconds: Total length (in seconds) of the selected file
 * Channels: Amount of audio chanels in the file (mono/stereo/etc)
-* Samplerate: Samüplerate of the selected file
+* Samplerate: Samplerate of the selected file
 * Grid: Grid for help
 * Bpm: Try to figure out the bpm of the file according to the grid (4 beat/grid line)
 
