@@ -1063,7 +1063,6 @@ class MainWindow:
             time3 = float(elapsed_seconds) * (800/self.seconds)
             time4 = time3  % 800
 
-
             self.wavcanvas.delete("playhead")
             self.wavcanvas.create_line(time4, 200, time4, 000, fill="white", tag="playhead")
 
@@ -1078,13 +1077,10 @@ class MainWindow:
 
 
 
-
-
     def update_buttons(self):
 
         self.splitbutton.config(text="Split to Files (" + self.divide_entry.get() + ")")
         self.trimbutton.config(text="Extract Part " + self.takepart_entry.get() )
-
 
         if self.divider == 1:
             self.splitbutton.config(state="disable")
@@ -1092,9 +1088,7 @@ class MainWindow:
         else:
             self.splitbutton.config(state="normal")
 
-
         self.count_bpm()
-
 
 
 
