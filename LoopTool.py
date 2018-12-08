@@ -19,8 +19,10 @@ import glob
 
 import soundfile as sf
 
+import tkinter.font as font
 
-version = "1.0.5"
+
+version = "1.0.6"
 
 white = "#ffffff"
 black = "#000000"
@@ -338,6 +340,12 @@ class MainWindow:
 
         #set initial grid
         self.setgrid()
+
+        # set global font size
+        font.nametofont('TkDefaultFont').configure(size=9)
+        font.nametofont('TkTextFont').configure(size=9)
+        font.nametofont('TkMenuFont').configure(size=9)
+        font.nametofont('TkFixedFont').configure(size=9)
 
 
 
