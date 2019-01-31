@@ -22,10 +22,17 @@ import soundfile as sf
 import tkinter.font as font
 
 
-version = "1.0.6"
+version = "1.0.7"
 
 white = "#ffffff"
 black = "#000000"
+
+
+textcolor = "black"
+selecttextcolor = "white"
+selectbgcolor = "grey"
+
+
 
 fadepresets = ["0", "50", "100"]
 
@@ -87,7 +94,7 @@ class MainWindow:
         self.wavfile_label = Label(self.wavfile_frame, text="WAV-file :", justify=LEFT)
         self.wavfile_label.grid(row=0, column=0, sticky=W+E)
 
-        self.wavfile_entry = Entry(self.wavfile_frame, width=58, background=white)
+        self.wavfile_entry = Entry(self.wavfile_frame, width=58, background=white, foreground=textcolor, selectforeground=selecttextcolor, selectbackground=selectbgcolor)
         self.wavfile_entry.bind("<Button-3>", self.entry_clear)
         self.wavfile_entry.grid(row=0, column=1)
 
@@ -116,28 +123,28 @@ class MainWindow:
 
         self.samples_label = Label(self.info_frame, text="Samples :", justify=LEFT)
         self.samples_label.pack(side=LEFT)
-        self.samples_entry = Entry(self.info_frame, width=15, background=white)
+        self.samples_entry = Entry(self.info_frame, width=15, background=white, foreground=textcolor, selectforeground=selecttextcolor, selectbackground=selectbgcolor)
         self.samples_entry.pack(side=LEFT, pady=5)
 
         self.seconds_label = Label(self.info_frame, text="Seconds :", justify=LEFT)
         self.seconds_label.pack(side=LEFT)
-        self.seconds_entry = Entry(self.info_frame, width=6, background=white)
+        self.seconds_entry = Entry(self.info_frame, width=6, background=white, foreground=textcolor, selectforeground=selecttextcolor, selectbackground=selectbgcolor)
         self.seconds_entry.pack(side=LEFT)
 
         self.channels_label = Label(self.info_frame, text="Channels :", justify=LEFT)
         self.channels_label.pack(side=LEFT)
-        self.channels_entry = Entry(self.info_frame, width=2, background=white)
+        self.channels_entry = Entry(self.info_frame, width=2, background=white, foreground=textcolor, selectforeground=selecttextcolor, selectbackground=selectbgcolor)
         self.channels_entry.pack(side=LEFT)
 
         self.samplerate_label = Label(self.info_frame, text="Samplerate :", justify=LEFT)
         self.samplerate_label.pack(side=LEFT)
-        self.samplerate_entry = Entry(self.info_frame, width=8, background=white)
+        self.samplerate_entry = Entry(self.info_frame, width=8, background=white, foreground=textcolor, selectforeground=selecttextcolor, selectbackground=selectbgcolor)
         self.samplerate_entry.pack(side=LEFT)
 
 
         self.grid_label = Label(self.info_frame, text="Grid :", justify=LEFT)
         self.grid_label.pack(side=LEFT)
-        self.grid_entry = ttk.Combobox(self.info_frame, width=3, values=gridpresets)
+        self.grid_entry = ttk.Combobox(self.info_frame, width=3, values=gridpresets, foreground=textcolor)
         self.grid_entry.current(0)
         self.grid_entry.bind("<<ComboboxSelected>>", self.on_set_grid)
         self.grid_entry.bind("<Return>", self.on_set_grid)
@@ -146,7 +153,7 @@ class MainWindow:
 
         self.bpm_label = Label(self.info_frame, text="Bpm :", justify=LEFT)
         self.bpm_label.pack(side=LEFT)
-        self.bpm_entry = Entry(self.info_frame, width=6, background=white)
+        self.bpm_entry = Entry(self.info_frame, width=6, background=white, foreground=textcolor, selectforeground=selecttextcolor, selectbackground=selectbgcolor)
         self.bpm_entry.pack(side=LEFT)
 
 
@@ -216,7 +223,7 @@ class MainWindow:
 
         self.partlength_label = Label(self.divide_frame, text="Part Length :", justify=LEFT)
         self.partlength_label.grid(row=0, column=9)
-        self.partlength_entry = Entry(self.divide_frame, width=10, background=white)
+        self.partlength_entry = Entry(self.divide_frame, width=10, background=white, foreground=textcolor, selectforeground=selecttextcolor, selectbackground=selectbgcolor)
         self.partlength_entry.grid(row=0, column=10)
 
         self.takepart_label = Label(self.divide_frame, text="Extract Part :", justify=LEFT)
@@ -226,7 +233,7 @@ class MainWindow:
 
         self.startpoint_label = Label(self.divide_frame, text="Start Point :", justify=LEFT)
         self.startpoint_label.grid(row=1, column=9)
-        self.startpoint_entry = Entry(self.divide_frame, width=10, background=white)
+        self.startpoint_entry = Entry(self.divide_frame, width=10, background=white, foreground=textcolor, selectforeground=selecttextcolor, selectbackground=selectbgcolor)
         self.startpoint_entry.grid(row=1, column=10)
 
 
@@ -237,7 +244,7 @@ class MainWindow:
         # Listbox
         self.listbox_frame = Frame(self.listboxes_frame)
         self.scrollbar = ttk.Scrollbar(self.listbox_frame, orient=VERTICAL)
-        self.listbox = Listbox(self.listbox_frame, width=47, height=20, yscrollcommand=self.scrollbar.set, selectmode=BROWSE, activestyle=NONE)
+        self.listbox = Listbox(self.listbox_frame, width=47, height=20, yscrollcommand=self.scrollbar.set, selectmode=BROWSE, activestyle=NONE, foreground=textcolor, selectforeground=selecttextcolor, selectbackground=selectbgcolor)
         self.listbox.bind("<ButtonRelease-1>", self.on_get_file_path)
         self.listbox.bind("<Double-Button-1>", self.on_copy_to_queue)
         self.listbox.bind("<KeyRelease-space>", self.play_file_toggle)
@@ -295,7 +302,7 @@ class MainWindow:
         # Queuelist
         self.queuelistbox_frame = Frame(self.listboxes_frame)
         self.scrollbar = ttk.Scrollbar(self.queuelistbox_frame, orient=VERTICAL)
-        self.queuelistbox = Listbox(self.queuelistbox_frame, width=47, height=20, yscrollcommand=self.scrollbar.set, selectmode=BROWSE, activestyle=NONE)
+        self.queuelistbox = Listbox(self.queuelistbox_frame, width=47, height=20, yscrollcommand=self.scrollbar.set, selectmode=BROWSE, activestyle=NONE, foreground=textcolor, selectforeground=selecttextcolor, selectbackground=selectbgcolor)
         #self.queuelistbox.bind("<Double-Button-1>", self.select_queue_item)
         self.queuelistbox.bind("<ButtonRelease-1>", self.select_queue_item)
         self.queuelistbox.bind("<Double-Button-1>", self.on_remove_from_queue)
@@ -312,7 +319,7 @@ class MainWindow:
         self.folder_label = Label(self.folder_frame, text="Workdir :", justify=LEFT)
         self.folder_label.grid(row=0, column=0)
 
-        self.folder_entry = Entry(self.folder_frame, width=82, background=white)
+        self.folder_entry = Entry(self.folder_frame, width=82, background=white, foreground=textcolor, selectforeground=selecttextcolor, selectbackground=selectbgcolor)
         self.folder_entry.bind("<Button-3>", self.entry_clear)
         self.folder_entry.grid(row=0, column=1, padx=5)
 
